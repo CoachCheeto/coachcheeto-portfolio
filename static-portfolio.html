@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Miller - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        
+        .section {
+            background: #fff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        
+        .travel-card {
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+        
+        .travel-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alex Miller</h1>
+        <p>Professional Portfolio</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>About Me</h2>
+            <p>Welcome to my portfolio! I'm Alex Miller, a professional focused on delivering exceptional results through creative problem-solving and strategic thinking.</p>
+        </section>
+
+        <section class="section">
+            <h2>Travel Adventures</h2>
+            <p>A collection of my favorite journeys around the world.</p>
+            
+            <div class="travel-grid">
+                <div class="travel-card">
+                    <h3>Santorini, Greece</h3>
+                    <p>June 2024</p>
+                    <p>Experienced the iconic whitewashed buildings and stunning sunsets of Santorini.</p>
+                </div>
+                
+                <div class="travel-card">
+                    <h3>Roatán, Honduras</h3>
+                    <p>August 2023</p>
+                    <p>Discovered the Caribbean beauty of Roatán's coral reefs and tropical forests.</p>
+                </div>
+                
+                <div class="travel-card">
+                    <h3>Montego Bay, Jamaica</h3>
+                    <p>December 2022</p>
+                    <p>Immersed in the vibrant culture and laid-back vibe of Jamaica's north coast.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Alex Miller. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
