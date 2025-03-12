@@ -2,8 +2,8 @@
 
 This repository contains my personal portfolio website, built with React.
 
-- Features a 2D map for travel section with country borders and photo-based coloring
 - Responsive design with modern UI components
+- Clean, minimalist interface
 - Created with AI assistance
 
 ## Technology Stack
