@@ -1,1 +1,708 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Alex Miller - Portfolio</title><script defer="defer" src="https://coachcheeto.github.io/coachcheeto-portfolio/static/js/main.5b6997e1.js"></script><link href="https://coachcheeto.github.io/coachcheeto-portfolio/static/css/main.cf646a68.css" rel="stylesheet"></head><body><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Miller - Portfolio</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem 0;
+        }
+        
+        .section {
+            background: #fff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .main-nav {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 1rem;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .main-nav a:hover,
+        .main-nav a.active {
+            background: #4DA6FF;
+            color: #fff;
+        }
+        
+        /* About Section */
+        .professional-summary {
+            text-align: left;
+        }
+        
+        .professional-summary h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        /* Work Experience */
+        .job {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        
+        .job-title-company h3 {
+            margin: 0;
+            color: #2c3e50;
+        }
+        
+        .job-location {
+            margin: 0.2rem 0;
+            color: #555;
+        }
+        
+        .job-period {
+            color: #777;
+            font-weight: bold;
+        }
+        
+        .job-details {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .job-details li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        /* Skills */
+        .skills-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .skills-group h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: #f0f0f0;
+            color: #444;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Travel Section */
+        .travel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .travel-intro {
+            margin-bottom: 2rem;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        .travel-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background: #f0f0f0;
+            border: none;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #333;
+            color: #fff;
+        }
+        
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .travel-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .travel-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .travel-card-image {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .travel-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: #fff;
+            padding: 1rem;
+        }
+        
+        .travel-card-overlay h3 {
+            margin: 0 0 5px;
+            font-size: 1.4rem;
+        }
+        
+        .travel-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .travel-modal.active {
+            display: flex;
+        }
+        
+        .travel-modal-content {
+            background: #fff;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .travel-modal-close {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+        }
+        
+        .travel-modal-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .travel-modal-info {
+            padding: 1.5rem;
+        }
+        
+        .travel-modal-info h2 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .travel-date {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .travel-description {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .travel-highlights {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+            color: #555;
+        }
+        
+        .travel-highlights li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .travel-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        
+        .travel-tag {
+            background: #f0f0f0;
+            color: #555;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .travel-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .travel-card {
+                height: 200px;
+            }
+            
+            .travel-modal-content {
+                flex-direction: column;
+            }
+            
+            .travel-modal-image {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .travel-card {
+                height: 180px;
+            }
+            
+            .travel-card-overlay h3 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="name">Alex Miller</h1>
+            <p class="title">Professional Portfolio</p>
+        </div>
+        <div class="nav-container">
+            <ul class="main-nav">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#travel">Travel</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about" class="section professional-summary">
+            <h2>Professional Summary</h2>
+            <p>
+                Welcome to my portfolio! I'm Alex Miller, a seasoned professional with expertise in automation, coaching, and creative problem-solving. 
+                With a strong background in data analysis and process improvement, I've helped organizations streamline operations and achieve significant efficiency gains.
+            </p>
+            <p>
+                My approach combines analytical thinking with a human-centered perspective, allowing me to deliver solutions that are both technically sound and user-friendly.
+                I'm passionate about continuous learning and staying at the forefront of technological advancements.
+            </p>
+        </section>
+
+        <section id="experience" class="section">
+            <h2>Work Experience</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-company">
+                        <h3>Senior Process Analyst</h3>
+                        <p class="job-location">Acme Corporation, New York, NY</p>
+                    </div>
+                    <p class="job-period">Jan 2020 - Present</p>
+                </div>
+                <ul class="job-details">
+                    <li>Led the implementation of automation solutions that reduced manual processing time by 45%</li>
+                    <li>Developed and maintained data pipelines for business intelligence reporting</li>
+                    <li>Mentored junior team members on process improvement methodologies</li>
+                    <li>Collaborated with cross-functional teams to identify opportunities for efficiency gains</li>
+                </ul>
+            </div>
+            
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-company">
+                        <h3>Business Analyst</h3>
+                        <p class="job-location">Tech Innovations Inc., Boston, MA</p>
+                    </div>
+                    <p class="job-period">Mar 2017 - Dec 2019</p>
+                </div>
+                <ul class="job-details">
+                    <li>Conducted requirements gathering sessions with stakeholders to define project scope</li>
+                    <li>Created detailed process documentation and workflow diagrams</li>
+                    <li>Performed data analysis to identify trends and improvement opportunities</li>
+                    <li>Assisted in implementing a new ERP system that enhanced operational efficiency by 30%</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            
+            <div class="skills-group">
+                <h3>Technical Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Process Automation</span>
+                    <span class="skill-tag">Excel/VBA</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Tableau</span>
+                </div>
+            </div>
+            
+            <div class="skills-group">
+                <h3>Soft Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Team Leadership</span>
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Presentation</span>
+                    <span class="skill-tag">Training & Mentoring</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="travel" class="section">
+            <h2>Travel Adventures</h2>
+            <p class="travel-intro">
+                A collection of my favorite journeys around the world. Each trip has shaped my perspective and created lasting memories.
+            </p>
+            
+            <div class="travel-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="vacation">Vacation</button>
+                <button class="filter-btn" data-filter="cultural">Cultural</button>
+                <button class="filter-btn" data-filter="adventure">Adventure</button>
+                <button class="filter-btn" data-filter="nature">Nature</button>
+                <button class="filter-btn" data-filter="urban">Urban</button>
+            </div>
+
+            <div class="travel-grid">
+                <!-- Travel cards will be added here by JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <div class="travel-modal" id="travelModal">
+        <div class="travel-modal-content">
+            <button class="travel-modal-close">&times;</button>
+            <div class="travel-modal-image" id="modalImage"></div>
+            <div class="travel-modal-info" id="modalInfo">
+                <!-- Modal content will be inserted by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Alex Miller. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Travel destination data
+        const travelDestinations = [
+            {
+                id: 12,
+                location: "Santorini",
+                country: "Greece",
+                date: "June 2024",
+                description: "Experienced the iconic whitewashed buildings and stunning sunsets of Santorini.",
+                highlights: [
+                    "Watched sunset in Oia",
+                    "Explored ancient Akrotiri ruins",
+                    "Swam in the Caldera",
+                    "Tasted local wines"
+                ],
+                image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac3ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                tags: ["vacation", "beach"]
+            },
+            {
+                id: 13,
+                location: "Roatán",
+                country: "Honduras",
+                date: "August 2023",
+                description: "Discovered the Caribbean beauty of Roatán's coral reefs and tropical forests.",
+                highlights: [
+                    "Scuba dived in the coral reef",
+                    "Visited the sloth sanctuary",
+                    "Explored Gumbalimba Park",
+                    "Relaxed at West Bay Beach"
+                ],
+                image: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                tags: ["adventure", "nature"]
+            },
+            {
+                id: 14,
+                location: "Montego Bay",
+                country: "Jamaica",
+                date: "December 2022",
+                description: "Immersed in the vibrant culture and laid-back vibe of Jamaica's north coast.",
+                highlights: [
+                    "Visited Dunn's River Falls",
+                    "Explored Rose Hall Great House",
+                    "Tried jerk chicken at local stands",
+                    "Relaxed at Doctor's Cave Beach"
+                ],
+                image: "https://images.unsplash.com/photo-1583423230902-509d9e0a5f1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+                tags: ["vacation", "culture"]
+            },
+            {
+                id: 15,
+                location: "Sydney",
+                country: "Australia",
+                date: "July 2018",
+                description: "Experienced the iconic landmarks and vibrant culture of Australia's largest city.",
+                highlights: [
+                    "Visited the Sydney Opera House",
+                    "Climbed the Harbour Bridge",
+                    "Explored Bondi Beach",
+                    "Took a ferry to Manly"
+                ],
+                image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e7d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                tags: ["cultural", "urban"]
+            },
+            {
+                id: 11,
+                location: "US Virgin Islands",
+                country: "USA",
+                date: "2021",
+                description: "Enjoy the beautiful beaches and vibrant marine life.",
+                highlights: [
+                    "Snorkeling",
+                    "Beach hopping",
+                    "Exploring Virgin Islands National Park"
+                ],
+                image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80",
+                tags: ["vacation", "beach"]
+            },
+            {
+                id: 10,
+                location: "Cairns",
+                country: "Australia",
+                date: "TBD",
+                description: "Gateway to the Great Barrier Reef and tropical rainforests.",
+                highlights: [
+                    "Snorkeling/diving",
+                    "Visiting Daintree Rainforest",
+                    "Kuranda Scenic Railway"
+                ],
+                image: "https://images.unsplash.com/photo-1518050900280-2f3f2e2e7a7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80",
+                tags: ["adventure", "nature"]
+            }
+        ];
+
+        // DOM Elements
+        const travelGrid = document.querySelector('.travel-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const modal = document.getElementById('travelModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalInfo = document.getElementById('modalInfo');
+        const closeButton = document.querySelector('.travel-modal-close');
+
+        // Initialize travel grid
+        function initTravelGrid(filter = 'all') {
+            // Clear grid
+            travelGrid.innerHTML = '';
+            
+            // Filter destinations
+            const filteredDestinations = filter === 'all' 
+                ? travelDestinations 
+                : travelDestinations.filter(dest => dest.tags.includes(filter));
+            
+            // Create destination cards
+            filteredDestinations.forEach(destination => {
+                const card = document.createElement('div');
+                card.className = 'travel-card';
+                card.dataset.id = destination.id;
+                
+                card.innerHTML = `
+                    <div class="travel-card-image" style="background-image: url(${destination.image})">
+                        <div class="travel-card-overlay">
+                            <h3>${destination.location}</h3>
+                            <p>${destination.country}</p>
+                        </div>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => openModal(destination));
+                travelGrid.appendChild(card);
+            });
+        }
+
+        // Open modal with destination details
+        function openModal(destination) {
+            modalImage.style.backgroundImage = `url(${destination.image})`;
+            
+            modalInfo.innerHTML = `
+                <h2>${destination.location}, ${destination.country}</h2>
+                <p class="travel-date">${destination.date}</p>
+                <p class="travel-description">${destination.description}</p>
+                <h3>Highlights</h3>
+                <ul class="travel-highlights">
+                    ${destination.highlights.map(highlight => `<li>${highlight}</li>`).join('')}
+                </ul>
+                <div class="travel-tags">
+                    ${destination.tags.map(tag => `<span class="travel-tag">${tag}</span>`).join('')}
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update grid with filtered destinations
+                initTravelGrid(button.dataset.filter);
+            });
+        });
+
+        closeButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.main-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Initialize the travel grid
+        document.addEventListener('DOMContentLoaded', () => {
+            initTravelGrid();
+        });
+    </script>
+</body>
+</html>
