@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/coachcheeto-portfolio/static/css/main.cf646a68.css",
+    "main.js": "/coachcheeto-portfolio/static/js/main.f8edc0f6.js",
+    "index.html": "/coachcheeto-portfolio/index.html",
+    "main.cf646a68.css.map": "/coachcheeto-portfolio/static/css/main.cf646a68.css.map",
+    "main.f8edc0f6.js.map": "/coachcheeto-portfolio/static/js/main.f8edc0f6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf646a68.css",
+    "static/js/main.f8edc0f6.js"
+  ]
+}
